@@ -187,3 +187,32 @@ List 인터페이스를 구현한 클래스로서 가변 개수의 배열이 필
         linkedList.removeLast(); // 맨뒤 삭제
     }
 ```
+
+## 3.QUEUE Collection
+
+- 특징: 가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 구조로 FIFO(First-In-First-Out)의 형태이다. 
+**Enqueue : 큐에 데이터를 넣는 기능
+Dequeue : 큐에 데이터를 꺼내는 기능**
+
+
+### 3-1 PriorityQueue
+- 특징 :
+우선순위를 가지고 큐(queue)로 일반적인 큐와는 다르게 원소에 우선순위를 부여하여 높은 순으로 먼전 반환한다.
+
+
+### 3-2 ArrayDequeue
+- 특징 : 
+deque는 양쪽으로 넣고 빼는 것이 가능한 큐 자료구조이다.
+
+## 4.Map Collection
+- 특징: List와 Set이 순서나 집합적인 개념의 인터페이스라면 **Map은 검색의 개념이 기미된 인터페이스**이다. Map 인터페이스는 데이터를 삽입할 때 Key와 Value의 형태로 삽입된다.
+
+### 4-1 HashMap
+
+
+### 4-2 HashTable
+
+
+### 4-2 LinkedHashMap
+
+### 4-2 TreeMap
