@@ -8,7 +8,7 @@
  - 제네릭이라는 기법으로 구현 되어 있다. 컬렉션 클래스나 인터페이스의 이름에 < E >, < K >, < V >이 포함 되어 있고 이들은 **타입 매개 변수**로 붚리며, 컬렉션의 요소(element)를 인반화시킨 타입니다. 특정 타입만 다루지 않고, 여러 종류의 타입으로 변신할 수 있도록 컬렉션을 일반화시키기 위해 < E > 를 사용 하는것 이다. 그러므로 E를 일반화시킨 타입 혹은 **제네릭 타입(generic type)** 이라고도 부른다.
  - 컬렉션의 요소는 객체들만 가능하다. int, char, double 등의 기본 타입의 데이터는 기본적으로 컬렉션의 요소로 불가능하지만, 기본 타입의 값이 삽입되면 자동으로 박싱(auto boxing)에 의해 Wrapper 클래스로 변환되어 객체 형태로 저장한다.
 
-## 1. Set(집합) Collection
+## 1. Set Collection
 - 특징
 	1. 요소의 **저장 순서**를 유지하지 않는다.
 	2. 같은 요소의 **중복 저장**을 허용하지 않는다.
@@ -119,17 +119,17 @@
 ```
   
  
-## 2. List(집합) Collection
+## 2. List Collection
 - 특징 
 	- 순서를 가지고 가지고 있으며 원소의 중복이 허용된다는 특징이 있다.
 - 종류
 
 |  클래스   |  특징  |
 |---------|-------|
-|ArrayList|~~~|
-| Stack| |
-|LinkedList||
-|Vector| |
+|ArrayList| 가변 개수의 배열이 필요할 때 마다 동적으로 증가한다. 동기화를 지원하지 않는다.|
+|Vector| 가변 개수의 배열이 필요할 때 마다 동적으로 증가한다. 동기화를 지원한다.|
+|LinkedList| 요소들을 양방향으로 연결하여 관리 한다.|
+|Stack| Data의 삽입과 추출이 후입선출(LIFO) 구조로 되어 있다.|
 
 ### 2-1 ArrayList
 - 특징 :
@@ -172,7 +172,7 @@ List 인터페이스를 구현한 클래스로서 가변 개수의 배열이 필
 **LinkedList는 요소들을 양방향(next, prev)으로 연결하여 관리한다는 점**을 제외하고 Vector, ArrayList와 매우 유사하다.
 **포인터로 가각의 노드들을 연결하고 있어서, 삽입/삭제가 빠르다는 장점이 있다.**
 (단순히 기존 포인터를 끊고 새로운 노드에 연결하면 되기 때문)
-하지만 특정 원소를 조회 하기 위해서는 첫 노드부터 순회해야 하기 때문에 ArrayList에 비해 느리다는 단점이 있다.
+하지만 특정 원소를 **조회** 하기 위해서는 첫 노드부터 순회해야 하기 때문에 **ArrayList에 비해 느리다**는 단점이 있다.
 
 ```java
     @Test
@@ -187,6 +187,34 @@ List 인터페이스를 구현한 클래스로서 가변 개수의 배열이 필
         linkedList.removeLast(); // 맨뒤 삭제
     }
 ```
+
+### 2-4 Stack
+
+- 특징: 
+Stack은 마지막에 저장한 데이터를 가장 먼저 꺼내게 되는 LiFO(Last In First Out) 구조로 되어 있다. 또한 순차적으로 데이터를 추가하고 삭제하는 ArrayList와 같은 배열기반의 컬렉션 클래스와 적합핟.
+
+```java
+    @Test
+    @DisplayName("Test Stack")
+    public void stackTest() {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        while(!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+    }
+```
+
+result : 
+5
+4
+3
+2
+1
 
 ## 3.QUEUE Collection
 
@@ -208,11 +236,14 @@ deque는 양쪽으로 넣고 빼는 것이 가능한 큐 자료구조이다.
 - 특징: List와 Set이 순서나 집합적인 개념의 인터페이스라면 **Map은 검색의 개념이 기미된 인터페이스**이다. Map 인터페이스는 데이터를 삽입할 때 Key와 Value의 형태로 삽입된다.
 
 ### 4-1 HashMap
+- 특징: 일반적으로 많이 사용하는 Key, Value 형태의 Map 자료구조 이다.
 
 
 ### 4-2 HashTable
-
+- 특징: HashMap과 동일 특징을 가지고 있지만 Thread-Safe하여 동기화를 지원한다.
 
 ### 4-2 LinkedHashMap
+- 특징: Map 형태의 자료구조 이지만 입력된 순서대로 순서를 가진다.
 
 ### 4-2 TreeMap
+- 특징: 이진트리로 구성되어 있고, TreeSet과 같이 정렬하여 데이터를 저장하고 있다. 데이터를 저장할때 정렬하기 때문에 저장 시간이 다른 자료구조에 비해 올래 걸린다.
