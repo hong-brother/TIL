@@ -40,6 +40,8 @@ where
 group by 
 	jim.id
 ```
+쿼리 수행 시간 : 17.586 초
+
 - 팜맵과 Index 맵을 조인하고 중복되는 데이터만 st_intersection으로 처리해주면 아래 그림과 같이 중복되는 데이터만 가져온다.
 
 ![](https://images.velog.io/images/hong-brother/post/59ec8654-1373-42dc-9bca-85f62a3a9a41/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-06%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%201.22.45.png)
@@ -61,6 +63,7 @@ group by fm."LAND_CODE"
 order by count(fm.id) desc
 limit 1;
 ```
+쿼리 수행 시간 : 0.012초
 - 해당 쿼리의 limit를 제외하고 쿼리를 실행 하면 해당 Index에는 밭이 가장 많이 존재하는걸로 판단이 된다.
 
 |LAND_CODE|count|
@@ -106,6 +109,8 @@ where
 group by 
 	jim.id
 ```
+쿼리 수행 시간 : 1.399초
+
 - 조회한 결과를 확인해보자.
 ![get_farm_distribution_map](https://images.velog.io/images/hong-brother/post/b872ed05-54a7-4404-8a5b-acbc43a775a5/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-05%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.12.53.png)
 위의 사진을 보면 제주도에는 밭이 가장 많이 분포 되어 있고 다음으로는 과수, 시설 등으로 한눈에 제주도에 Land속성에 대한 분포도를 확인해 볼 수 있다. 
@@ -132,6 +137,8 @@ with t as (
 select st_union(t.geom), t.land from t 
 group by t.land
 ```
+쿼리 수행 시간 : 26.067초 (확실히. ST_Union으로 객체를 합치기 때문에 시간이 더 오래 걸리는것 같다.)
+
 ![ST_Union](https://images.velog.io/images/hong-brother/post/8cd2f403-a78a-4386-89d8-3925536d71e2/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-05%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.51.17.png)
 - Geometry를 좀더 심플하게 만들어 보자
 	- 생성된 분류맵에 Geometry를 st_simplify함수를 이용하여 심플하게 만들어 랜더링 부담이 덜 되도록 만들어 보자
@@ -156,6 +163,7 @@ select
 from t 
 group by t.land
 ```
+쿼리 수행 시간 : 27.646초
 
 ![simplify](https://images.velog.io/images/hong-brother/post/f9bc33b0-7c40-419f-9d64-f61c36087252/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-06%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2012.03.45.png)
 
