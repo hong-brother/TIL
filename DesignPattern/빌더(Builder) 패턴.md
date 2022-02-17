@@ -15,6 +15,8 @@
 ## 구현
 - 객체를 생성하는 방법과 표현하는 방법을 분리하여 구현.
 
+----
+
 Builder Interface
 ```java
 package me.hsnam.builder;
