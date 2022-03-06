@@ -17,7 +17,7 @@
 ## 해결 방안
 ### 1.Redis를 이용하여 분배하기
 - 내부적으로도 WebSocket 사용하고 있기때문에 redis를 사용하고 있었다.
-- Redis를 pub/sub로 사용하여 cluster모드 일때 특정 Process에 Sub를 활성화하여 분산시킬까 생각을 해보았는데 Redis를 사용하게 되면 메세지를 받았을때 Redis에서 지우도록 처리해줘야 되고 에러가 발생했을때 메세지를 어떻게 처리할 것이며... 많은 것들을 처리해야 어렵다 판단하였다.(~~개발자에게는 항상 시간이 충분치 않았다...~~)
+- Redis를 pub/sub로 사용하여 cluster모드 일때 특정 Process에 Sub를 활성화하여 분산시킬까 생각을 해보았는데 Redis를 사용하게 되면 메세지를 받았을때 Redis에서 지우도록 처리해줘야 되고 에러가 발생했을때 메세지를 어떻게 처리할 것이며... 많은 것들을 처리해야 하기때문에 어렵다 판단하였다.(~~개발자에게는 항상 시간이 충분치 않았다...~~)
 
 ### 2.특정 Process에만 Subscribe하도록 설정하기
 #### 어노테이션 기반의 Subscribe
@@ -40,7 +40,7 @@ export class MessagingService {
 ```
 
 #### Process가 initialize될때 동적 Subscribe
-- 그렇다면 해당 서비스가 초기화될때 환경변수에 따라 활성화 여부를 결정 하고 활성화 하면 되지 않을까? 
+- **그렇다면 해당 서비스가 초기화될때 환경변수에 따라 활성화 여부를 결정 하고 활성화 하면 되지 않을까? **
 nestjs-rabbitmq 모듈라이브러리 깃허브 이슈에서 찾아보니 이미 나같은 사람은 있었다.!!!!
 뭐 대략적으로 요약하자면 **구독을 수동으로 만들려면 amqpConnection을 만들고 호출**하기만 하면된다.
 ![](https://images.velog.io/images/hong-brother/post/c38b94c8-03c1-4b9b-b2e7-a70a0882449c/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.40.10.png)
@@ -65,9 +65,9 @@ export class InspectionsService {
             }
           },
           {
-            exchange: `classification-inspection`,
-            routingKey: `classification-inspection-key`,
-            queue: 'classification-inspection',
+              exchange: 'exchange1',
+              routingKey: 'subscribe-route',
+              queue: 'subscribe-queue',
           },
         )
         .then(() => {
@@ -126,7 +126,7 @@ module.exports = {
 };
 ```
 
-- AmqpConnection를 주입 받아 생성자에서 초기화 될때 환경변수에 따라서 subscribe를 생성한다. 생성할때 exchange, routingKey, Queue를 설정해주고 해당 메세지 처리 부분에는 메세지 처리 함수를 호출하여 기능을 수행한다.
+- AmqpConnection를 주입 받아 **생성자에서 초기화 될때 환경변수에 따라서 subscribe를 생성한다.** 생성할때 exchange, routingKey, Queue를 설정해주고 해당 메세지 처리 부분에는 메세지 처리 함수를 호출하여 기능을 수행한다.
 - PM2의 APP을 2개로 구성하여 하는 Subscriber활성화 하는 APP, Subscriber를 비활성화 하는 APP으로 나누어 구성한다.
 
 ## 결과
