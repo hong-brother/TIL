@@ -1,3 +1,6 @@
+>
+작년에 CPU서버를 회사내에 개발서버로 구입하면서 기존Proxmox에서 새로운 Proxmox로 이전하면서 필요한 내용들을 정리 하였다. 
+
 # Proxmox 란?
 - Proxmox VE는 기업 가상화를위한 오픈 소스 서버 관리 플랫폼입니다. KVM 하이퍼 바이저와 LXC, 소프트웨어 정의 스토리지 및 네트워킹 기능을 단일 플랫폼에 긴밀하게 통합합니다. 통합 된 웹 기반 사용자 인터페이스를 사용하면 VM 및 컨테이너, 고 가용성 클러스터 또는 통합 재해 복구 도구를 쉽게 관리 할 수 있습니다.
 - Hypervisor중 하나이며 HostOS에 따라 Type1, Type2로 나뉠수 있습니다.
@@ -6,15 +9,15 @@
 - Hypervisor란 가상머신을 생성하고 구동하는 소프트웨어 입니다. 가상머신 모니터라고도 불리는 하이퍼바이저 운영 체제와 가상 머신의 리소스를 분리해 vm의 생성과 관리를 지원합니다. 또한 하이퍼바이저는 위와 같이 Type1, Type2로 나뉠수 있습니다.
 
 # Install Proxmox
-- 설치는 어렵지 않다. [Proxmox](https://www.proxmox.com/en/)에서 ISO파일을 다운로드 받아 설치하면됩다.
+- 설치는 어렵지 않다. [Proxmox](https://www.proxmox.com/en/)에서 ISO파일을 다운로드 받아 설치 하면 된다..
 - 설치후 http://호스트IP:8006/으로 접속해서 확인 할 수 있다.
 ![](https://images.velog.io/images/hong-brother/post/a5bd803b-42bf-4639-9ad7-fee0de1c9820/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-10%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.37.png)
 
-# 설치 후 설정
+# 설치 및 환경설정
 ## 구독 설정 해제
 - 설치 후 ssh 접속하고 나서 apt-get update를 통해 패키지를 업데이트가 되어야 하는데 subscribe 설정이 되어 있어 업데이트가 되지 않는다.
 ![](https://images.velog.io/images/hong-brother/post/eb49bee0-ef5c-4909-bd99-06ac3a88bf4b/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-10%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.48.02.png)
-- 무료 라이센스를 선택하여 패키지를 업데이트 하자
+- 무료 구독으로 변경하여 패키지들 업데이트 합니다.
 1. /etc/apt/sources.list 변경
 
 ```bash
@@ -152,3 +155,4 @@ DataCenter - Storage 항목에서 아래 사진과 같이 Add Directory 하여 �
 - [vembu](https://www.vembu.com/blog/type-1-and-type-2-hypervisor/)
 - [hypervisor](https://www.redhat.com/ko/topics/virtualization/what-is-a-hypervisor)
 - [PVEDiscordDark](https://github.com/Weilbyte/PVEDiscordDark)
+- [Proxmox 설치 및 초기 필수 설정](https://nad4.tistory.com/entry/Proxmox-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%B4%88%EA%B8%B0-%ED%95%84%EC%88%98-%EC%84%A4%EC%A0%95)
