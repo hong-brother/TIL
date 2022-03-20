@@ -114,7 +114,7 @@ HTTP version
 해당 request에 대한 추가 정보(additional information)를 담고 있는 있음.
 
 ### body
-
+해당 request에 대함 메시지를 담고 있다.
 
 ## HTTP 메서드 종류
 실무에서는 주로 GET, POST, PUT, PATCH 정도 사용한다.
@@ -138,6 +138,7 @@ HTTP version
 
 ### DELETE
 - 리소스 삭제
+
 ### HEAD
 - GET과 동일하지만 메세지 부분을 제외하고, 상태 줄과 헤더만 반환
 
@@ -202,4 +203,49 @@ HTTP version
     - 리다이렉트시 요청 메서드와 본문 유지(처음 POST를 보내면 리다이렉트도 POST도 유지)
 
 
-### 3xx(Redirection)
+### 4xx(Client Error)
+클라이언트의 요청에 잘못된 문법등으로 서버가 요청을 수행 할 수 없음
+오류의 원인이 클라이언트에 있다.
+
+- 400(Bad Request)
+	- 요청 구문, 메시지 등등에 대한 오류
+    - 클라이언트는 요청 내용을 다시 검토하고 보내야 한다.
+    - ex) 요청 파라미터가 잘못 되었거나, API 스펙이 맞지 않을 때, 보내는 json형식이 맞지 않을때
+    
+- 401(Unauthorized)
+	- 클라이언트가 해당 리소스에 대한 인증이 필요함
+	- 인증(Authentication)되지 않음
+
+- 403(Forbidden)
+	- 서버가 요청을 이해 했지만 승인을 거부함
+    - 주로 인증 자격 증명은 있지만, 접근 권한이 불충분한 경우
+    - ex) 어드민 등급이 아닌 사용자가 로그인 했지만 어드민 리소스에 접근하는 경우
+>
+Authentication -  인증 
+Authorization - 인가
+
+- 404(Not Found)
+	- 요청 리소스가 서버에 없음
+    - 또는 클라이언트가 권한이 부족한 리소스에 접근할 때 해당 리소스를 숨기고 싶을 때
+
+### 5xx(Server Error)
+서버 문제로 오류 발생
+
+- 500(Internal Server Error)
+	- 서버 내부 문제로 오류 발생
+    - 애매하면 500 오류
+    
+- 503(Service Unavailable)
+	- 서버가 일시적인 과부하 또는 예정된 작읍으로 잠시 요청을 처리할 수 없음
+	- Retry-After 헤더 필드로 얼마뒤에 복구 되는지도 보낼 수도 있음.
+    
+## HTTP Header - 추가 작성중
+- HTTP 전송에 필요한 모든 부가정보(메시지 바디의 내용, 메시지 바디의 크기, 압축, 인증, 요청 클라이언트, 서버 정보, 캐시 관리 정보)
+- [표준 헤더 참조](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+- 필요시 Custom 헤더 추가 가능
+
+
+
+
+# 참고문헌
+[스프링 핵심 원리 - 기본편](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
