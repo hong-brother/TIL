@@ -42,7 +42,7 @@ OSI 7계층 참고
 4. 신뢰성이 낮음
 5. TCP보다 속도가 빠름
 
-# URI와 웹 브라우저 요청 흐름
+# URI, URN, URL
 ## URI(Uniform Resource Idntifier)
 >
 인터넷 상에서 어떤 자원을 식별하기 위한 구성이며 URL과 URN의 상위 개념이다.
@@ -52,14 +52,14 @@ OSI 7계층 참고
 ## URL(Uniform Resource Locator)
 > 웹에서 접근가능한 자원의 주소르 일괄되게 표현하는 형식
 
-![](https://images.velog.io/images/hong-brother/post/21a83476-22c7-4a6e-ac33-449c03f3ed14/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%208.55.25.png)
+![](https://images.velog.io/images/hong-brother/post/a1c8d6fb-9a86-44dc-a305-8386bf9a7e98/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.32.09.png)
 
-- 프로토콜: 웹에서 서버와 클라이언트간에 어떤 방법으로 접근할지 명시(ex. http, https...)
-- 호스트: 웹서버의 위치를 지정. 도메인이나 IP주소를 사용한다.
-- 포트: 웹서버에서 자원을 접근하기 위한 사용되는 관문 HTTP포트는 80번, HTTPS포트는 443번 포트를 사용하고 생략 가능하다.
-- 경로: 웹서버에서 자원에 대한 접근 경로
-- 매개변수: Query, Parameters라고 불리며 key와 value로 짝을 이룬다.
-- 부분 식별자: fragment라고 하며 URL이 지정한 자원의 세부 부분을 지정할때 쓴다.
+- protocol: 웹에서 서버와 클라이언트간에 어떤 방법으로 접근할지 명시(ex. http, https...)
+- host: 웹서버의 위치를 지정. 도메인이나 IP주소를 사용한다.
+- port: 웹서버에서 자원을 접근하기 위한 사용되는 관문 HTTP포트는 80번, HTTPS포트는 443번 포트를 사용하고 생략 가능하다.
+- path: 웹서버에서 자원에 대한 접근 경로
+- query: Query, Parameters라고 불리며 key와 value로 짝을 이룬다.
+- fragment: fragment라고 하며 URL이 지정한 자원의 세부 부분을 지정할때 쓴다.
 
 ## URN(Uniform Resource Name)
 >
@@ -67,6 +67,16 @@ OSI 7계층 참고
 
 - urn:isbn:8960777331
 - urn : isbn : 1234567891234 (국제표준도서번호)
+
+# 웹 브라우저 요청 흐름
+![](https://images.velog.io/images/hong-brother/post/4ec9ceef-edec-445a-945d-fe7b9a211913/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.40.48.png)
+![](https://images.velog.io/images/hong-brother/post/038d6eec-3cf5-4748-8105-0cfaa323cec7/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.41.16.png)
+
+  ![](https://images.velog.io/images/hong-brother/post/72113079-e073-4743-baaf-a2b6ab66b9b9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.42.40.png)
+  
+<p>
+  <img src="https://images.velog.io/images/hong-brother/post/b8b8e4b2-a072-4410-87ed-70175d3a28ea/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.38.34.png" alt="1" style="height:100%;"/>
+</p>
 
 # HTTP
 >
@@ -81,15 +91,115 @@ HTTP - HyperText Transfer Protocol
 
 ## 특징
 - 클라이언트-서버 구조(Request / Response)
-- 무상태 프로토콜(stateless), 비연결성
-- HTTP 메시지 (HTML, TEXT, IMAGE, ... 거의 모든 형태의 데이터 전송 가능)
-![](https://images.velog.io/images/hong-brother/post/3e6e7700-d114-4647-98ff-d41fc14fc595/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.24.30.png)
-![](https://images.velog.io/images/hong-brother/post/c9a1cbb5-f59e-468d-a717-ecebd2aab7af/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.25.07.png)
+- 무상태 프로토콜(stateless)
+	- 스케일 아웃(수평확장)에 유리
+- 비연결성
+- HTTP 메시지 (HTML, TEXT, IMAGE 등 거의 모든 형태의 데이터 전송 가능)
 - 단순함과 확장 가능
 
+## HTTP Request 구조
+![](https://images.velog.io/images/hong-brother/post/45e8304f-a141-4445-9ed9-167cb68ca2d8/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.47.24.png)
+
+### start-line
+>
+ex) GET /Search HTTP/1.1
+
+- HTTP Method
+해당 request의 HTTP 메서드 (GET, POST, PUT, DELETE)
+- request target
+해당 request가 전동되는 URL
+- HTTP Version
+HTTP version
+### header
+해당 request에 대한 추가 정보(additional information)를 담고 있는 있음.
+
+### body
 
 
+## HTTP 메서드 종류
+실무에서는 주로 GET, POST, PUT, PATCH 정도 사용한다.
+### GET
+- 리스트 조회
+- 서버에 전달하고 싶은 데이터를 query(쿼리 파라미터, 쿼리 스트링)를 통해서 전달
+- **메시지 바디를 사용해서 데이터를 전달 할 수 있지만, 지원하지 않는 곳이 많아서 권장하지 않는다.**
+
+### POST
+- **메시지 바디를 통해 서버로 요청 데이터 전달**
+- 주로 전달된 데이터로 신규 리소스 등록, 프로세스 처리에 사용
+- 다른 메서드로 처리하기 애매한 경우 사용
+	- ex) JSON으로 조회 데이터를 넘겨야 하는데, GET 메서드를 사용하기 어려운 경우
+    - **어지간히 애매하면 POST 사용~**
+
+### PUT
+- 리소스를 대체, 해당 리소스가 없으면 생성(덮어버림...)
+
+### PATCH
+- 리소스 부분 변경
+
+### DELETE
+- 리소스 삭제
+### HEAD
+- GET과 동일하지만 메세지 부분을 제외하고, 상태 줄과 헤더만 반환
+
+### OPTIONS
+- 대상 리소스에 대한 통신 가능 옵션(메서드)을 설멍(주로 CORS에서 사용)
+
+### CONNECTION
+- 대상 자원으로 식별되는 서버에 대한 터널을 설정
+
+### TRACK
+- 대상 리소스에 대한 경로를 따라 메시지 루프백 테스트를 수행
+
+## HTTP Status
+- 1xx(informational): 요청이 수신되어 처리중
+- 2xx(Successful): 요청 정상 처리
+- 3xx(Redirection): 요청을 완료하려면 추가 행동이 필요
+- 4xx(Client Error): 클라이언트 오류, 잘못된 문법등으로 서버가 요청을 수행할 수 없음
+- 5xx(Server Error): 서버 오류, 서버가 정상 요청을 처리하지 못함
+### 1xx(informational)
+거의 사용하지 않음.
+
+### 2xx(Successful)
+클라이언트의 요청을 성공적으로 처리
+
+- 200 OK
+	- 요청 성공
+- 201 Created
+	- 요청 성공해서 새로운 리소스가 생성됨
+- 202 Accepted
+	- 요청이 접수되었으나 처리가 완료되지 않았음
+    - 배치 처리 같은 곳에서 사용
+    - ex) 요청 접수 후 1시간 뒤에 배치 프로세스가 요청을 처리함.
+- 204 NO Content
+	- 서버가 요청을 성공적으로 수행했지만, 응답 페이로드 부분에 보낼 데이터가 없음
+    - ex) 웹 문서 편집기에서 save 버튼
+    - save 버튼의 결과로 아무 내용이 없어도 된다.
+
+### 3xx(Redirection)
+요청을 완료하기 위해 유저 에이전트의 추가 조치 필요
+웹 브러우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동
+![](https://images.velog.io/images/hong-brother/post/af6d38d7-a150-45bb-b047-97c618f50129/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.30.14.png)
+- 300 Multiple Choices 
+	- 사용하지 않음
+- 301 Moved Permanently
+	- 영구 리다이렉션
+    - 리다이렉트시 요청 메서드가 GET으로 변하고, 본문이 제거될 수 있음
+- 302 Found
+	- 일시적인 리다이렉션
+    - 리다이렉트시 요청 메서드가 GET으로 변하고, 본문이 제거될 수 있음
+    - **현실적으로 이미 많은 애플리케이션 라이브러리들이 302를 기본값으로 사용**
+- 303 See Other
+	- 일시적인 리다이렉션
+   	- 리다이렉트시 요청 메서드가 GET으로 변경
+- 304 Not Modified
+	- 캐시를 목적으로 사용
+    - 클라이언트에게 리소스가 수정되지 않았음을 알려준다. 따라서 클라이언트로는 로컬PC에 저정된 캐시를 재사용한다.(캐시로 리다이렉트 한다.)
+- 307 Temporary Redirect 
+	- 일시적인 리다이렉션
+    - 리다이렉트시 요청 메서드와 본문 유지(요청 메서드를 변경하면 안된다.)
+- 308 Permanent Redirect
+	- 영구 리다이렉션
+    - 리다이렉트시 요청 메서드와 본문 유지(처음 POST를 보내면 리다이렉트도 POST도 유지)
 
 
-
-"-" 는 이중적인 이미 inside-logo
+### 3xx(Redirection)
