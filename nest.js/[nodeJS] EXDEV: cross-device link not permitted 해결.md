@@ -1,5 +1,5 @@
 >
-리눅스의 USB 메모리에서 하드로 파일을 이동할때 나느 cross-device link not permitted 에 대해서 정리 해본다.
+리눅스의 USB 메모리에서 하드로 파일을 이동할때 발생하는 cross-device link not permitted 에 대해서 정리 해본다.
 
 ## 원인
 ### cross-device link not permitted 란
