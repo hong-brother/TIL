@@ -80,3 +80,18 @@ Node.js는 V8엔진 기반의 JS런타임이며, WAS 기능을 구현 할 수 �
 - 멀티 Thread 환경이므로 싱글톤 객체(서블릿, 스프링 빈)는 주의해서 사용한다.
 
 ## 자바 백엔드 웹 기술 역사
+
+
+
+
+
+
+
+
+
+# 참고문헌
+[스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-1/dashboard)
+
+# Github
+[spring-study-mvc-1](https://github.com/hong-brother/spring-study-mvc-1)
+[spring-study-mvc-2](https://github.com/hong-brother/spring-study-mvc-2)
