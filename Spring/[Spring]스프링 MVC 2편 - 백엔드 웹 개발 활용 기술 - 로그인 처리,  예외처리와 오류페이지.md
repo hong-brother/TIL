@@ -178,7 +178,7 @@ public class WebConfig implements WebMvcConfigurer {
 - order : 인터셉터의 호출 순서를 지정한다. 낮을 수록 먼저 호출된다.
 - addPathPatterns("/**") : 인터셉터를 적용할 URL 패턴을 지정한다. 
 - excludePathPatterns("/css/**", "/*.ico", "/error") : 인터셉터에서 제외할 패턴을 지정한다.
-
+## 스프링 내부 flow
 
 ![](https://velog.velcdn.com/images/hong-brother/post/124d4261-ab74-4f7d-9768-ef8dfe2936a5/image.png)
 
