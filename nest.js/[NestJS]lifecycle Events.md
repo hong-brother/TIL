@@ -1,0 +1,60 @@
+
+# LifeCycle Events
+Nest 어플리케이션에서도 관리되는 lifecycle이 있다. 마치 아마두..? 싱글톤 컨테이너(스프링 컨테이너) 생명주기와 비슷하다.
+
+>스프링 컨테이너 생명주기
+스프 컨테이너 생성 - 스프링 빈 생성 - 의존관계 주입 - 초기화 콜백 - 사용 - 소멸전 콜백 - 스프링 종료
+
+LifeCycle 이벤트에 대한 가시성을 제공하는 lifecycle hook과 발생 시 조치(모듈, 주입 가능한 또는 컨트롤러에 등록된 코드를 실행)할 수 있는 기능을 제공한다.
+
+
+## LifeCycle Sequeue
+- 아래 다이어그램은 애플리케이션이 부트스트랩된 시간 부터 노드 프로세서가 종료될 때까지의 Nest 어플리케이션 생명 주기 이벤터의 순서를 보여준다.
+- 크게 초기화, 실행, 종료의 세 단계로 나눌 수 있다.
+
+![](https://velog.velcdn.com/images/hong-brother/post/1091dd39-1893-497e-aaf1-c46ad4b33b7c/image.png)
+
+- 호출 순서 
+![](https://velog.velcdn.com/images/hong-brother/post/2e00ed85-b3df-43ff-aec3-c7a32f2e1a31/image.png)
+```
+onModuleInit -> onApplicationBootstrap -> Termination signal receive -> onModuleDestroy -> beforeApplicationShutdown -> onApplicationShutdown
+```
+
+```javascript
+import {
+  BeforeApplicationShutdown,
+  Injectable,
+  Logger,
+  OnApplicationBootstrap,
+  OnApplicationShutdown,
+  OnModuleDestroy,
+  OnModuleInit
+} from '@nestjs/common';
+
+@Injectable()
+export class AppService implements OnModuleInit, OnModuleDestroy, OnApplicationShutdown, OnApplicationBootstrap, BeforeApplicationShutdown {
+    private readonly logger = new Logger(AppService.name);
+
+    onModuleInit() {
+        this.logger.log('onModuleInit');
+    }
+
+    onApplicationBootstrap(): any {
+        this.logger.log("onApplicationBootstrap");
+    }
+
+    onModuleDestroy() {
+        this.logger.log('onModuleDestroy');
+    }
+
+    beforeApplicationShutdown(signal?: string): any {
+      this.logger.log('beforeApplicationShutdown');
+    }
+
+   onApplicationShutdown(signal?: string) {
+        this.logger.log('onApplicationShutdown =' + signal);
+    }
+
+
+}
+```
