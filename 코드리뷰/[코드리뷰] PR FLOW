@@ -1,0 +1,11 @@
+# GOAL
+- pull request에 대한 이해 
+- pull request의 flow 이해
+
+
+## pull request를 하는 이유
+- 자연스러운 코드 리뷰를 위해
+- Push 권한이 없는 오픈 소스 프로젝트에 기여할 때
+- 콜라보레이터에 소속되어있는 경우에는, 그 저장소에서 브런치를 따고 푸쉬하면 풀리퀘가 가능하다. + 에서 branch가 보이는 경우는 그 저장소만의 기능이다
+- Push로 협업했을때, 다른 사람의 commit을 볼 일이 많지 않고, master branch와 merge할 때서야 보게되는데, Pull Request는 당장 merge하지 않는다는 규칙이 Pull Request를 보고, 코드에 신경쓰게되고 어떤 작업이 언제 적용되었는지 알 수 있다. 오히려 당황스러운 코드충돌을 줄일 수 있다.
+![업로드중..](blob:https://velog.io/b82adc0b-1e8b-4d60-817b-edeca6eafac6)
