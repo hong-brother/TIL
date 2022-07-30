@@ -75,3 +75,4 @@ node {
     }
 }
 ```
+- 위와 같이 pipline script를 작성하고 job을 실행 하면 해당 서버의 uptime 결과를 확인 할 수 있다.
