@@ -1,8 +1,6 @@
-# GOAL
-- 변수 타입 
-- 함수
 
-# 변수 타입
+# TypeScript의 변수
+
 ## 변수 선언
 - TS 문자열 선언
 ```javascript
