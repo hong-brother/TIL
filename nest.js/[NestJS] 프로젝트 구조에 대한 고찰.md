@@ -1,4 +1,5 @@
-![](https://velog.velcdn.com/images/hong-brother/post/8ad59bdb-0605-4ca9-a24c-a22dee71783b/image.png)
+![](https://velog.velcdn.com/images/hong-brother/post/9adaf3c4-d7b8-4fa4-bfaf-12992312f9be/image.png)
+
 해당 포스트에서는 NestJS에 대한 프로젝트 구조에 대해서 생각해보는 개인 고찰 포스트 입니다. **단순히 이렇게도 생각해 볼 수 있겠군아** 라고 넘겨 주셔도 좋을 것 같습니다.🙏
 
 # 프로젝트 구조는 항상 어렵다.
@@ -28,7 +29,6 @@
 (각 모듈에 대해서는 다음 포스트에서 자세희 다루겠습니다.)
 
 ## NestJS Modules
-![](https://velog.velcdn.com/images/hong-brother/post/862a6a03-1306-4992-9b1a-c0aa37b97bd6/image.png)
 ### Shared Modules
 - NestJS에서는 모듈이 싱글톤으로 관리 되기 때문에 여러 모듈 간에 쉽게 Providers의 동일한 인스턴스를 공유 할 수 있습니다.
 
@@ -81,8 +81,3 @@
 - NestJS를 사용하면서 각 기능에 따른 Module에 공통으로 사용되는 모듈에 대해서 중복 코드가 발생되어 Spring과 같은 MVC구조로 해결 할 수 있지 않을까 생각해보았습니다.
 - 어쩌면 아직은 제가 NestJS에 대한 Module에 대한 구조를 자세히 이해하지 못한 것 같습니다.
 - NestJS에서 제시해주는 Modules개념을 다시 익히면서 구조적으로 해결 할 수 있는 방법을 좀더 고안해봐야 할 것 같습니다.
-
-
-
-
-
