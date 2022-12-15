@@ -9,7 +9,7 @@ NEST.JS에 JWT Token을 적용하기 위한 이론 알고 가기
 
 ![JWT](https://velog.velcdn.com/images/hong-brother/post/35e27902-705d-4804-83ea-4ff472b852ee/image.png)
 
-![](https://velog.velcdn.com/images/hong-brother/post/e66316fb-ea0c-4afc-ab6d-c39f437155f0/image.png)
+![](https://velog.velcdn.com/images/hong-brother/post/dab00598-2f8f-40f8-9467-bc4ab88326e3/image.png)
 
 
 ## Header
