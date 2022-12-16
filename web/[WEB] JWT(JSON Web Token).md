@@ -58,7 +58,7 @@ Claim에는 크게 세가지 `registered Claim`, `public Claim`, `private Claim`
 
 ## Signature
 ```json
-RSASHA256(
+RSASHA256( <-- header의 alg에 따라서 변경
   base64UrlEncode(header) + "." +
   base64UrlEncode(payload),
   secret
