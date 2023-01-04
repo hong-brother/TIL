@@ -37,5 +37,5 @@ Redis는 key-value 쌍으로 데이터를 관리하는 스토리지 이며 key�
 만약 해당 사용자가 로그아웃이 되어 있다면 Refresh Token은 Redis에서 삭제 되었을 것이다.
 - Refresh Token을 받은 `Server` 에서는 Redis에서 Refresh Token이 존재 여부를 확인하고 존재 하지 않을 경우 `Client` 응답으로 HTTP UnAuthorized(401) 상태를 응답하게 된다.
 
-### Access Token 탈취 당할 경우 
-- 만약 `보안기능`에 정상적인 사용자의 IP 이거나, 해외 IP가 사용되었을 경우 Refresh Token을 서버내에(Redis)삭제 하므로써 해당 사용자를 강제 로그아웃하여 보안을 강화 할 수 있을 것 이다.
+### Refresh Token을 이용한 보안 강화
+- 만약 정상적인 사용자 Access Token이 탈취 당하거나, 원치 않은 해외 IP가 사용된 사용자인 경우 Refresh Token을 서버내에(Redis)삭제 하므로써 해당 사용자를 강제 로그아웃하여 보안을 강화 할 수 있을 것 이다.
